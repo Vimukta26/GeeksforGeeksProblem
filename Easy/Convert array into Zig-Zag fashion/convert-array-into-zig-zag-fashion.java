@@ -85,14 +85,25 @@ class GFG {
 
 class Solution {
     public static void zigZag(int n, int[] arr) {
-        Arrays.sort(arr);
-        
-        // Traverse the array from 1 to n - 1
-        for (int i = 1; i < n - 1; i += 2) {
-            // Swap the current element with the next element
-            int temp = arr[i];
-            arr[i] = arr[i + 1];
-            arr[i + 1] = temp;
+        boolean flag = true;
+
+        for (int i = 0; i <= n - 2; i++) {
+            if (flag) { // "<" relation expected
+                if (arr[i] > arr[i + 1]) {
+                    // Swap arr[i] and arr[i + 1]
+                    int temp = arr[i];
+                    arr[i] = arr[i + 1];
+                    arr[i + 1] = temp;
+                }
+            } else { // ">" relation expected
+                if (arr[i] < arr[i + 1]) {
+                    // Swap arr[i] and arr[i + 1]
+                    int temp = arr[i];
+                    arr[i] = arr[i + 1];
+                    arr[i + 1] = temp;
+                }
+            }
+            flag = !flag; // flip flag
         }
     }
 }
