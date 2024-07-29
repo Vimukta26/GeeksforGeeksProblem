@@ -28,22 +28,23 @@ public class Main {
 
 // User function Template for Java
 
-class Solution{
-    public int print2largest(List<Integer> arr){
+class Solution {
+    public int print2largest(List<Integer> arr) {
+        // Code Here
         int n=arr.size();
         int first,second;
+        first=second=Integer.MIN_VALUE;
         if(n<2){
             return -1;
         }
-        first=second=Integer.MIN_VALUE;
         for(int i=0;i<n;i++){
             if(arr.get(i)>first){
                 second=first;
                 first=arr.get(i);
-            } else if(second<arr.get(i)&&first!=arr.get(i)){
-                second=arr.get(i);
             }
-        
+            else if(arr.get(i)>second && arr.get(i)!=first){
+                second=arr.get(i);
+            } 
         }
         if(second==Integer.MIN_VALUE){
             return -1;
@@ -51,6 +52,5 @@ class Solution{
         else{
             return second;
         }
-        
-    }
+        }
 }
